@@ -20,4 +20,4 @@ The first version will train an image classifier and investigate how its predict
 
 ## Current Status
 
-Project environment and initial research structure are being set up.
+See RESEARCH_LOG.md
