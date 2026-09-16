@@ -6,9 +6,11 @@ ShiftGuard AI is a machine learning research project investigating when neural-n
 
 Can a machine learning system detect when an input differs enough from its training distribution that its prediction should no longer be trusted?
 
-## Initial Goal
+## Approach
 
-The first version will train an image classifier and investigate how its predictions and confidence change when test images are systematically corrupted or shifted.
+The project first trains a baseline image classifier on CIFAR-10. The model will then be tested on systematically modified images, such as blurred, noisy or brightness-shifted inputs, to analyze how accuracy and confidence change under distribution shift.
+
+The long-term goal is to develop a reliability score that can identify potentially untrustworthy predictions.
 
 ## Technologies
 
@@ -17,21 +19,23 @@ The first version will train an image classifier and investigate how its predict
 - NumPy
 - scikit-learn
 - Matplotlib
+- ROCm
 
 ## Development Environment
 
+- Ubuntu 26.04
 - Python 3.14
 - PyTorch 2.13 with ROCm
 - AMD Radeon RX 9060 XT
-- Ubuntu 26.04
-- CIFAR-10 dataset
+- CIFAR-10
 
-GPU acceleration through ROCm has been successfully configured and verified.
+## Current Progress
 
-## Current Status
+- Development and GPU environment configured
+- CIFAR-10 loaded, inspected and visualized
+- Baseline CNN implemented and successfully tested
+- Next: train and evaluate the baseline CNN
 
-- Development environment configured
-- CIFAR-10 dataset loaded
-- Dataset structure inspected
-- Training samples visualized
-- AMD GPU acceleration enabled
+## Research Log
+
+Detailed development notes and experimental results are documented in [`RESEARCH_LOG.md`](RESEARCH_LOG.md).
