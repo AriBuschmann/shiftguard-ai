@@ -14,11 +14,8 @@ How does the reliability of neural-network confidence change under increasing di
 - Installed ML dependencies
 - Verified PyTorch environment
 
-### Next step
-Load and inspect CIFAR-10 and build the first baseline classifier.
 
-
-## CIFAR-10 dataset exploration 3:50 pm
+## CIFAR-10 dataset exploration - 3:50 pm
 
 - Downloaded CIFAR-10 successfully.
 - Training set: 50,000 images
@@ -33,3 +30,31 @@ Load and inspect CIFAR-10 and build the first baseline classifier.
 
 The low image resolution makes some classes visually difficult to distinguish.
 This may become relevant when investigating model reliability under image corruptions and distribution shift.
+
+
+### GPU acceleration setup - 5:30 pm
+
+Configured ROCm 10 for the AMD Radeon RX 9060 XT.
+
+PyTorch initially used a CUDA build intended for NVIDIA GPUs, so I replaced it with a ROCm-compatible version.
+
+Verification results:
+
+- PyTorch: 2.13.0+rocm10.0.0
+- GPU detected: AMD Radeon RX 9060 XT
+- GPU acceleration available: True
+- ROCm/HIP backend successfully detected
+
+### What I learned
+
+CUDA is specific to NVIDIA GPUs, while AMD GPUs use ROCm/HIP.
+
+PyTorch still uses the `torch.cuda` API for many GPU operations when running with ROCm, so the same training code can often work on both NVIDIA and AMD hardware.
+
+### Current project state
+
+CIFAR-10 can now be loaded and visualized successfully. The development environment is ready for GPU-accelerated model training.
+
+### Next step
+
+Design and implement the first baseline CNN for CIFAR-10.

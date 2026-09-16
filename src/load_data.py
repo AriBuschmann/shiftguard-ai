@@ -12,7 +12,7 @@ train_dataset = datasets.CIFAR10(
     root="./data",
     train=True,
     download=True,
-    transform=transform # every image is converted to a tensor vbvbvbbvbvbbvbvbvbvbvbvbvbvbvvbvbbvbvvbvbvbvb bvbvbvbv
+    transform=transform # every image is converted to a tensor
 )
 
 test_dataset = datasets.CIFAR10(
@@ -45,4 +45,4 @@ images, labels = next(iter(train_loader))
 
 print("Batch image shape:", images.shape)
 print("Batch label shape:", labels.shape)
-print("Pixel range:", images.min().item(), "-", images.max().item())
+print("Pixel range:", images.min().item(), "-", images.max().item()) 

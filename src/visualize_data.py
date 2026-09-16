@@ -26,7 +26,7 @@ images, labels = next(iter(loader))
 # names of the classes
 classes = dataset.classes
 
-# area with 16 cells
+# area with 16 cells - 4 x 4
 fig, axes = plt.subplots(4, 4, figsize=(8,8))
 
 for i, ax in enumerate(axes.flat):
@@ -36,8 +36,9 @@ for i, ax in enumerate(axes.flat):
     # Matplotlib: [height, width, colour channel]
     image = np.transpose(image, (1, 2, 0))
 
-    # place the correct class name above each image
     ax.imshow(image, interpolation="nearest")
+
+    # place the correct class name above each image
     ax.set_title(classes[labels[i].item()])
     ax.axis("off")
 

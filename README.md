@@ -18,6 +18,20 @@ The first version will train an image classifier and investigate how its predict
 - scikit-learn
 - Matplotlib
 
+## Development Environment
+
+- Python 3.14
+- PyTorch 2.13 with ROCm
+- AMD Radeon RX 9060 XT
+- Ubuntu 26.04
+- CIFAR-10 dataset
+
+GPU acceleration through ROCm has been successfully configured and verified.
+
 ## Current Status
 
-See RESEARCH_LOG.md
+- Development environment configured
+- CIFAR-10 dataset loaded
+- Dataset structure inspected
+- Training samples visualized
+- AMD GPU acceleration enabled
