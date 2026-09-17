@@ -73,23 +73,29 @@ Implemented and successfully tested the first CNN for CIFAR-10.
 
 Architecture:
 
-- Input: 3 × 32 × 32
-- Conv2D: 3 → 32
-- ReLU
+- Input: 3 × 32 × 32 RGB image
+- Conv2D: 3 → 32 feature maps
+- ReLU activation
 - MaxPooling
-- Conv2D: 32 → 64
-- ReLU
+- Conv2D: 32 → 64 feature maps
+- ReLU activation
 - MaxPooling
-- Flatten: 4096 features
-- Linear: 4096 → 128
-- ReLU
-- Output: 128 → 10 logits
+- Flatten: 64 × 8 × 8 = 4096 features
+- Fully connected layer: 4096 → 128
+- ReLU activation
+- Output layer: 128 → 10 logits
 
-Test:
+The output contains one logit for each CIFAR-10 class.
+
+To verify the architecture, I passed a dummy batch of four artificial 32 × 32 RGB images through the network.
+
+Test result:
 
 - Input shape: `[4, 3, 32, 32]`
 - Output shape: `[4, 10]`
-- Model architecture test successful
+- Architecture test completed successfully
+
+This confirmed that all convolutional, pooling and linear layers are dimensionally compatible.
 
 ---
 
@@ -110,3 +116,27 @@ Test:
 - Measure loss and accuracy
 - Save and evaluate the trained model
 - Begin controlled distribution-shift experiments
+
+
+
+## 2026-09-17
+
+### Baseline CNN Training
+
+Trained the baseline CNN on the 50,000 CIFAR-10 training images for five epochs using the AMD Radeon RX 9060 XT.
+
+Results:
+
+- Epoch 1: Loss 1.3057 | Accuracy 53.47%
+- Epoch 2: Loss 0.9289 | Accuracy 67.42%
+- Epoch 3: Loss 0.7707 | Accuracy 73.19%
+- Epoch 4: Loss 0.6499 | Accuracy 77.30%
+- Epoch 5: Loss 0.5520 | Accuracy 80.57%
+
+The steadily decreasing loss and increasing training accuracy indicate that the CNN successfully learned patterns from the training dataset.
+
+The trained model weights were saved as `models/baseline_cnn.pth`.
+
+### Next Step
+
+Evaluate the trained model on the unseen CIFAR-10 test set and establish the clean-data baseline for accuracy, loss and prediction confidence.
