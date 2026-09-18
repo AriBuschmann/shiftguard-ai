@@ -117,7 +117,7 @@ This confirmed that all convolutional, pooling and linear layers are dimensional
 - Save and evaluate the trained model
 - Begin controlled distribution-shift experiments
 
-
+---
 
 ## 2026-09-17
 
@@ -140,3 +140,31 @@ The trained model weights were saved as `models/baseline_cnn.pth`.
 ### Next Step
 
 Evaluate the trained model on the unseen CIFAR-10 test set and establish the clean-data baseline for accuracy, loss and prediction confidence.
+
+---
+
+## 2026-09-18
+
+### Clean Baseline Evaluation
+
+Evaluated the trained baseline CNN on all 10,000 unseen CIFAR-10 test images.
+
+Results:
+
+- Test Loss: 0.8420
+- Test Accuracy: 72.24%
+- Mean Confidence: 78.12%
+- Mean Confidence (Correct): 84.34%
+- Mean Confidence (Incorrect): 61.93%
+
+### Observation
+
+The model generalizes reasonably well to unseen CIFAR-10 images, although test accuracy is lower than the final training accuracy of 80.57%.
+
+The average prediction confidence of 78.12% is higher than the test accuracy of 72.24%, providing an initial indication of model overconfidence.
+
+Incorrect predictions still have an average confidence of 61.93%. This is particularly relevant for ShiftGuard because the project investigates whether neural networks remain overly confident as inputs move away from their training distribution.
+
+### Next Step
+
+Introduce controlled distribution shifts to the CIFAR-10 test images and measure how accuracy and prediction confidence change with increasing shift severity.
