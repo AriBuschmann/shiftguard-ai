@@ -1,4 +1,4 @@
-# model training with loss function, backpropagation and optimizer
+# Model training with loss function, backpropagation and optimizer
 
 """
 Complete workflow:
