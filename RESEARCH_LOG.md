@@ -168,3 +168,47 @@ Incorrect predictions still have an average confidence of 61.93%. This is partic
 ### Next Step
 
 Introduce controlled distribution shifts to the CIFAR-10 test images and measure how accuracy and prediction confidence change with increasing shift severity.
+
+---
+
+## 2026-10-05
+
+### Gaussian Noise Distribution-Shift Experiment
+
+Implemented and completed the first full distribution-shift experiment using Gaussian noise on the 10,000 CIFAR-10 test images.
+
+Six predefined severity levels were evaluated:
+
+- Severity 0: σ = 0.00
+- Severity 1: σ = 0.05
+- Severity 2: σ = 0.10
+- Severity 3: σ = 0.15
+- Severity 4: σ = 0.20
+- Severity 5: σ = 0.25
+
+For each severity, the same trained baseline CNN and the same test set were used. Accuracy, mean confidence, confidence for correct and incorrect predictions, and the confidence-accuracy gap were measured automatically.
+
+### Results
+
+- Severity 0: Accuracy 72.24% | Mean Confidence 78.12% | Gap 5.88 pp
+- Severity 1: Accuracy 66.96% | Mean Confidence 74.76% | Gap 7.80 pp
+- Severity 2: Accuracy 53.61% | Mean Confidence 70.15% | Gap 16.54 pp
+- Severity 3: Accuracy 40.13% | Mean Confidence 68.50% | Gap 28.37 pp
+- Severity 4: Accuracy 30.59% | Mean Confidence 68.25% | Gap 37.66 pp
+- Severity 5: Accuracy 24.72% | Mean Confidence 68.28% | Gap 43.56 pp
+
+The results were saved automatically to `results/gaussian_noise_results.csv` and visualized in accuracy and accuracy-vs-confidence plots.
+
+### Observation
+
+Increasing Gaussian noise strongly reduced classification accuracy from 72.24% to 24.72%, while mean confidence decreased only from 78.12% to 68.28%.
+
+This caused the confidence-accuracy gap to grow from 5.88 to 43.56 percentage points. At the highest severity, incorrect predictions still had an average confidence of 66.00%.
+
+This shows that the baseline CNN becomes substantially less reliable under distribution shift without becoming proportionally less confident.
+
+### Next Step
+
+Add a calibration metric such as Expected Calibration Error (ECE) to quantify miscalibration more rigorously before testing additional distribution shifts such as blur and brightness changes.
+
+---
